@@ -18,6 +18,13 @@ var generateBtn = document.querySelector("#generate");
     console.log(usergenerate)
     
   } 
+
+//2
+
+
+
+
+
    
 //3.
 function characterType() {
