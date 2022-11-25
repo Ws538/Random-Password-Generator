@@ -1,0 +1,62 @@
+// 1. function: created window prompt when button clicked
+// 2. prompt asks how many characters
+// 3. prompt beetween 8 - 128 characters, if not, then loop prompt characters must be inbetween 8-128
+// 4. prompt ask for character types including special characters / numbers / lower/upper case 
+// 5. 
+
+
+
+
+
+
+// Assignment Code
+
+//2.
+var generateBtn = document.querySelector("#generate");
+
+  function promptMe() {
+    var usergenerate = window.prompt("How long do you want your password")
+    console.log(usergenerate)
+    
+  } 
+
+//3.   
+
+//4.
+function characterType() {
+
+var characters = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmn"
+
+var result = "";
+
+for (var i = 0 ; i < characters.length; i++ ) {
+  result += characters.charAt(Math.floor(Math.random() * characters.length));
+}
+
+return result;
+}
+
+  
+
+
+
+
+// // Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+
+// // Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
+// // cerates window prompt.
