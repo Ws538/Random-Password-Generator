@@ -20,28 +20,29 @@ var generateBtn = document.querySelector("#generate");
 
     //2 
 
-    if (usergenerate > 8 || usergenerate < 128) {
-      window.prompt("Do you want to include special characters?");
+    if (usergenerate > 8 && usergenerate < 128) {
+      window.prompt("Do you want to include special characters?")
 
-    } else if (usergenerate < 8 || usergenerate > 128) {
-      window.alert("Length of password must be between 8-128 characters.")
-      
-    }
+    } else (usergenerate < 8 && usergenerate > 128 ) 
+      window.alert("Length of password must be between 8-128 characters.");
+       
+    
 
     console.log(usergenerate);
-
-
+  }
+  
+  
     // if yes, include special characters, else move onto next window prompt
 
     // window prompt "Do you want to include numbers?"  if yes include numbers else move onto next prompt
 
-    // window prompt "Do you want to include Upper case letteers?" if yes include upper case letters, 
+    // window prompt "Do you want to include Upper case letters?" if yes include upper case letters, 
 
 
 
 
 
-  } 
+  
 
 
 
