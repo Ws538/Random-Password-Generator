@@ -86,7 +86,6 @@ var upperCasedCharacters = [
   "Z",
 ];
 
-//1.
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
