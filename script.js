@@ -1,72 +1,151 @@
-// 1. function: created window prompt when button clicked, prompt asks how many characters
-// 2. prompt beetween 8 - 128 characters, if not, then loop prompt characters must be inbetween 8-128
-// 3. prompt ask for character types including special characters / numbers / lower/upper case 
-// 4. 
-
-
-
-
-
-
 // Assignment Code
+
+var specialCharacters = [
+  "@",
+  "%",
+  "+",
+  "\\",
+  "/",
+  "'",
+  "!",
+  "#",
+  "$",
+  "^",
+  "?",
+  ":",
+  ",",
+  ")",
+  "(",
+  "}",
+  "{",
+  "]",
+  "[",
+  "~",
+  "-",
+  "_",
+  ".",
+];
+
+var numericCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+var lowerCasedCharacters = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+var upperCasedCharacters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
 
 //1.
 var generateBtn = document.querySelector("#generate");
 
-  function promptMe() {
-    var usergenerate = window.prompt("How long do you want your password? (8-128 characters) ")
-   
+function generatePassword() {
+  var userChoice = window.prompt(
+    "How long do you want your password? (8-128 characters) "
+  );
+  console.log(userChoice);
 
-
-    //2 
-
-    if (usergenerate > 8 && usergenerate < 128) {
-      window.prompt("Do you want to include special characters?")
-
-    } else (usergenerate < 8 && usergenerate > 128 ) 
-      window.alert("Length of password must be between 8-128 characters.");
-       
-    
-
-    console.log(usergenerate);
+  if (userChoice < 8) {
+    alert("The password length must be longer than 8 characters.");
+    return "";
   }
-  
-  
-    // if yes, include special characters, else move onto next window prompt
-
-    // window prompt "Do you want to include numbers?"  if yes include numbers else move onto next prompt
-
-    // window prompt "Do you want to include Upper case letters?" if yes include upper case letters, 
-
-
-
-
-
-  
-
-
-
-
-
-
-
-   
-//3.
-
-
-function characterType() {
-
-  var characters = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz1234567890?!@#$%^&*"
-  
-  var result = "";
-  
-  for (var i = 0 ; i < characters.length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  if (userChoice > 128) {
+    alert("The password length must be shorter than 128 characters.");
+    return "";
   }
-  
-  return result;
+
+  var hasSpecialCharacters = window.confirm(
+    "Do you want to include special characters? If yes, press OK, if no, press cancel"
+  );
+  var hasNumbers = window.confirm(
+    "Do you want to include numbers? If yes, press OK, if no, press cancel"
+  );
+  var hasLowerCase = window.confirm(
+    "Do you want to include Lower case letters? If yes, press OK, if no, press cancel "
+  );
+  var hasUpperCase = window.confirm(
+    "Do you want to include Upper Case letters? If yes, press OK, if no, press cancel "
+  );
+
+  var combineCharacters = [];
+
+  if (hasSpecialCharacters) {
+    combineCharacters = combineCharacters.concat(specialCharacters);
   }
-  
+  if (hasNumbers) {
+    combineCharacters = combineCharacters.concat(numericCharacters);
+  }
+  if (hasLowerCase) {
+    combineCharacters = combineCharacters.concat(lowerCasedCharacters);
+  }
+  if (hasUpperCase) {
+    combineCharacters = combineCharacters.concat(upperCasedCharacters);
+  }
+  if (combineCharacters.length === 0) {
+    alert("Didnt specify a character type");
+    return "";
+  }
+  var randomPassword = "";
+  for (var i = 0; i < userChoice; i++) {
+    randomPassword = randomPassword + getRandomArray(combineCharacters);
+  }
+  return randomPassword;
+}
+function getRandomArray(array) {
+  var random = Math.floor(Math.random() * array.length);
+  var randomElement = array[random];
+  return randomElement;
+}
 // // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -74,15 +153,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-
 
 // // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
-
-// // cerates window prompt.
